@@ -20,7 +20,7 @@ const Home = ({ connectToMetaMask, account }) => {
     const data = await response.json();
 
     if (data.success) {
-      // Take the first 10 tokens from the returned list
+      // Take the first 10 tokens from the returned list so that app doesn't get heavy
       setTokens(Object.values(data.tokens).splice(0, 10));
     }
     setLoading(false);
