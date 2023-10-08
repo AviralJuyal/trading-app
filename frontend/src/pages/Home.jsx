@@ -49,11 +49,11 @@ const Home = ({ connectToMetaMask, account }) => {
 
   // Use effect hook to get a quote whenever the selected token information changes
   useEffect(() => {
-    // setInterval(() => {
-    if (selectedToken.src && selectedToken.dst && selectedToken.amount) {
-      getQuote(selectedToken.src, selectedToken.dst, selectedToken.amount);
-    }
-    // }, 1500);
+    setInterval(() => {
+      if (selectedToken.src && selectedToken.dst && selectedToken.amount) {
+        getQuote(selectedToken.src, selectedToken.dst, selectedToken.amount);
+      }
+    }, 15000);
   }, [selectedToken]);
 
   return (
