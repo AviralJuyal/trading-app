@@ -59,7 +59,7 @@ exports.Swap = async (req, res) => {
 
     res.status(200).send({ success: true, data: response.data });
   } catch (error) {
-    console.log(error);
+    console.log(error,"error in swap");
 
     res.status(500).send({ success: false, msg: "some error occurred" });
   }

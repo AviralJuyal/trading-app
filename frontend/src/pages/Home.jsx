@@ -21,14 +21,14 @@ const Home = ({ connectToMetaMask, account }) => {
 
     if (data.success) {
       // Take the first 10 tokens from the returned list so that app doesn't get heavy
-      setTokens(Object.values(data.tokens).splice(0, 10));
+      setTokens(Object.values(data.tokens));
     }
     setLoading(false);
   };
 
   // Function to fetch the quote price for a swap from the backend
   const getQuote = async (src, dst, amount) => {
-    setLoading(true);
+    // setLoading(true);
     const response = await fetch(
       `${apiEndPoint}/quotes?src=${src}&dst=${dst}&amount=${amount}`
     );
@@ -36,10 +36,11 @@ const Home = ({ connectToMetaMask, account }) => {
 
     if (data.success) {
       setQuotedPrice(data.data?.toAmount);
-    } else {
-      setQuotedPrice(0);
     }
-    setLoading(false);
+    // else {
+    // setQuotedPrice(0);
+    // }
+    // setLoading(false);
   };
 
   // Use effect hook to fetch tokens when the component mounts
@@ -49,11 +50,11 @@ const Home = ({ connectToMetaMask, account }) => {
 
   // Use effect hook to get a quote whenever the selected token information changes
   useEffect(() => {
-    setInterval(() => {
-      if (selectedToken.src && selectedToken.dst && selectedToken.amount) {
+    if (selectedToken.src && selectedToken.dst && selectedToken.amount) {
+      // setInterval(() => {
         getQuote(selectedToken.src, selectedToken.dst, selectedToken.amount);
-      }
-    }, 15000);
+      // }, 15000);
+    }
   }, [selectedToken]);
 
   return (
