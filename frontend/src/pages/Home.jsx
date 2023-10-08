@@ -49,9 +49,11 @@ const Home = ({ connectToMetaMask, account }) => {
 
   // Use effect hook to get a quote whenever the selected token information changes
   useEffect(() => {
+    // setInterval(() => {
     if (selectedToken.src && selectedToken.dst && selectedToken.amount) {
       getQuote(selectedToken.src, selectedToken.dst, selectedToken.amount);
     }
+    // }, 1500);
   }, [selectedToken]);
 
   return (
@@ -60,6 +62,8 @@ const Home = ({ connectToMetaMask, account }) => {
         <div className="w-full flex items-center justify-center px-10">
           {/* Render the BigCard component with necessary props */}
           <BigCard
+            loading={loading}
+            setLoading={setLoading}
             connectToMetaMask={connectToMetaMask}
             tokens={tokens}
             selectedToken={selectedToken}

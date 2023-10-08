@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     if (window.ethereum) {
       const web3Instance = new Web3(window.ethereum);
-      console.log(web3Instance);
+      // console.log(web3Instance);
       setWeb3(web3Instance);
     } else {
       console.log("Please install MetaMask to use this dApp!");
@@ -39,6 +39,7 @@ function App() {
           method: "eth_requestAccounts",
         });
         setAccounts(accountArray);
+        console.log(accountArray);
       } catch (err) {
         console.error("User rejected request:", err);
       }

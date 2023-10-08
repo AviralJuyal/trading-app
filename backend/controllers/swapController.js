@@ -47,8 +47,8 @@ exports.Swap = async (req, res) => {
     const { src, dst, amount, from, slippage } = req.query;
     const response = await axios({
       method: "get",
-      //   url: `${process.env.API_END_POINT}/swap/v5.2/1/swap?src=${src}&dst=${dst}&amount=${amount}&from=${from}&slippage=${slippage}`,
-      url: `https://api-rinkeby.1inch.dev/swap/v5.2/1/swap?src=${src}&dst=${dst}&amount=${amount}&from=${from}&slippage=${slippage}`,
+        url: `${process.env.API_END_POINT}/swap/v5.2/1/swap?src=${src}&dst=${dst}&amount=${amount}&from=${from}&slippage=${slippage}`,
+      // url: `https://api-rinkeby.1inch.dev/swap/v5.2/1/swap?src=${src}&dst=${dst}&amount=${amount}&from=${from}&slippage=${slippage}`,
 
       responseType: "json",
       headers: {
